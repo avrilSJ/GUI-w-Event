@@ -1,0 +1,679 @@
+package mp9;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.event.*;
+
+
+public class FinalMP9 implements ActionListener {
+	public static JButton submit;
+	public static TextField tName, tDate, tPlace, tAge, tEmail;
+	public static ButtonGroup genderGroup; 
+	public static JTextArea tComment;
+	public static JRadioButton male, female, excellent, vGood, good, fair, poor,daily,week3,week1,rarely,never, regular,occasional,never2,quit,other2;
+	public static JRadioButton low,moderate,high,veryhigh,none, d1, d2, d3,d4,d5;
+	public static JCheckBox hdisease,diabetes,hypertension,asthma,other;
+	
+public static void main(String[] args)
+{
+	// FRAME & PANELS
+	JFrame frame = new JFrame ("MP9");
+	
+	JPanel header = new JPanel();
+	JPanel headerSplit1 = new JPanel();
+	JPanel headerSplit2 = new JPanel();
+	JPanel infoPanel = new JPanel();
+	JPanel HealthPanel = new JPanel();
+	JPanel leftInfo = new JPanel(new GridLayout(3,1));
+	JPanel rightInfo = new JPanel();
+	
+	
+	// LABELS
+	Label headerLabel = new Label("HealthCheck Survey");
+	Label subHeaderLabel = new Label ("Empowering Healthier Lives, One Question");
+	Label pInfo = new Label ("Personal Information");
+	
+	// PERSONAL INFO
+	Panel pName = new Panel();
+	Label name = new Label("Name ");
+	name.setFont(new Font("Arial", Font.PLAIN, 15));
+	tName = new TextField(" ", 24);
+	
+	Panel pDate = new Panel();
+	Label date = new Label("Date   ");
+	date.setFont(new Font("Arial", Font.PLAIN, 15));
+	tDate = new TextField(" ", 24);
+	
+	Panel pPlace = new Panel();
+	Label place = new Label("Place ");
+	place.setFont(new Font("Arial", Font.PLAIN, 15));
+	tPlace = new TextField(" ", 24);
+	
+	Panel pAge = new Panel();
+	Label age = new Label("Age     ");
+	age.setFont(new Font("Arial", Font.PLAIN, 15));
+	tAge = new TextField(" ", 24);
+	
+	Panel pEmail= new Panel();
+	Label email = new Label("Email  ");
+	email.setFont(new Font("Arial", Font.PLAIN, 15));
+	tEmail = new TextField(" ", 24);
+	
+	Panel pGender = new Panel();
+	Label gender = new Label("Gender  ");
+	gender.setFont(new Font("Arial", Font.PLAIN, 15));
+	male = new JRadioButton("Male                 ");
+	female = new JRadioButton("Female   ");
+	genderGroup = new ButtonGroup();
+	genderGroup.add(male);
+	genderGroup.add(female);
+
+	
+	// HEALTH QUESTIONS
+	Panel pHealth = new Panel();
+	Label lHealth = new Label("Health Questions");
+	lHealth.setFont(new Font("Arial", Font.BOLD, 15));
+	
+	//OVERALL HEALTH
+	Panel overallH = new Panel();
+	Panel overallHQ = new Panel();
+	Label lOverallH = new Label("How would you describe your overall health?                            ");
+	
+	lOverallH.setFont(new Font("Arial", Font.PLAIN, 15));
+	excellent = new JRadioButton ("Excellent             ");
+	vGood = new JRadioButton ("Very Good               ");
+	good = new JRadioButton ("Good                     ");
+	fair = new JRadioButton ("Fair                      ");
+	poor = new JRadioButton ("Poor             ");
+	ButtonGroup gr1 = new ButtonGroup();
+	gr1.add(excellent);
+	gr1.add(vGood);
+	gr1.add(good);
+	gr1.add(fair);
+	gr1.add(poor);
+
+	pHealth.add(lHealth);
+	overallH.add(lOverallH);
+	overallHQ.add(excellent);
+	overallHQ.add(vGood);
+	overallHQ.add(good);
+	overallHQ.add(fair);
+	overallHQ.add(poor);
+
+	// CHRONIC
+	Panel chronic = new Panel();
+	Panel chronicQ = new Panel();
+	Label lChronic = new Label("Do you have any chronic health conditions?                       ");
+	chronic.setFont(new Font("Arial", Font.PLAIN, 15));
+	
+	hdisease = new JCheckBox ("Heart Disease     ");
+	diabetes = new JCheckBox ("Diabetes                ");
+	hypertension = new JCheckBox ("Hypertension       ");
+	asthma = new JCheckBox ("Asthma          	   ");
+	other = new JCheckBox ("Other          ");
+	
+	chronic.add(lChronic);
+	chronicQ.add(hdisease);
+	chronicQ.add(diabetes);
+	chronicQ.add(hypertension);
+	chronicQ.add(asthma);
+	chronicQ.add(other);
+
+	//EXERCISE
+	Panel exercise = new Panel();
+	Panel exerciseQ = new Panel();
+	Label lexercise = new Label("How often do you engage in physical activity or exercise?                        ");
+	
+	lexercise.setFont(new Font("Arial", Font.PLAIN, 15));
+	daily = new JRadioButton ("Daily                     ");
+	week3 = new JRadioButton ("3-5x a week           ");
+	week1 = new JRadioButton ("1-2x a week         ");
+	rarely = new JRadioButton ("Rarely                ");
+	never = new JRadioButton ("Never      ");
+	ButtonGroup gr2 = new ButtonGroup();
+	gr2.add(daily);
+	gr2.add(week3);
+	gr2.add(week1);
+	gr2.add(rarely);
+	gr2.add(never);
+	
+	exercise.add(lexercise);
+	exerciseQ.add(daily);
+	exerciseQ.add(week3);
+	exerciseQ.add(week1);
+	exerciseQ.add(rarely);
+	exerciseQ.add(never);
+
+	// SMOKE
+	Panel tobacco = new Panel();
+	Panel tobaccoQ = new Panel();
+	Label lTobacco = new Label("Do you smoke or use tobacco products                 ");
+	
+	lTobacco.setFont(new Font("Arial", Font.PLAIN, 15));
+	regular = new JRadioButton ("Regularly            ");
+	occasional = new JRadioButton ("Occasionally           ");
+	never2 = new JRadioButton ("Never                    ");
+	quit = new JRadioButton ("Quit                    ");
+	other2 = new JRadioButton ("Other        ");
+	ButtonGroup gr3 = new ButtonGroup();
+	gr3.add(regular);
+	gr3.add(occasional);
+	gr3.add(never2);
+	gr3.add(quit);
+	gr3.add(other2);
+	
+	tobacco.add(lTobacco);
+	tobaccoQ.add(regular);
+	tobaccoQ.add(occasional);
+	tobaccoQ.add(never2);
+	tobaccoQ.add(quit);
+	tobaccoQ.add(other2);
+	
+	// STRESS
+	Panel stress = new Panel();
+	Panel stressQ = new Panel();
+	Label lStress = new Label("How would you rate your stress level?                 ");
+	
+	lStress.setFont(new Font("Arial", Font.PLAIN, 15));
+	low = new JRadioButton ("Low                      ");
+	moderate= new JRadioButton ("Moderate                ");
+	high = new JRadioButton ("High                         ");
+	veryhigh = new JRadioButton ("Very High         ");
+	none = new JRadioButton ("None        ");
+	ButtonGroup gr4 = new ButtonGroup();
+	gr4.add(low);
+	gr4.add(moderate);
+	gr4.add(high);
+	gr4.add(veryhigh);
+	gr4.add(none);
+	
+	stress.add(lStress);
+	stressQ.add(low);
+	stressQ.add(moderate);
+	stressQ.add(high);
+	stressQ.add(veryhigh);
+	stressQ.add(none);
+	
+	
+	// Diet
+	Panel diet = new Panel();
+	Panel dietQ = new Panel();
+	Label lDiet = new Label("How often do you consume fruits and vegetables in your diet?                ");
+	
+	lDiet.setFont(new Font("Arial", Font.PLAIN, 15));
+	d1 = new JRadioButton ("Daily                     ");
+	d2= new JRadioButton ("3-5x a week	           ");
+	d3 = new JRadioButton ("1-2x a week              ");
+	d4 = new JRadioButton ("Rarely           ");
+	d5 = new JRadioButton ("Never        ");
+	ButtonGroup gr5 = new ButtonGroup();
+	gr5.add(d1);
+	gr5.add(d2);
+	gr5.add(d3);
+	gr5.add(d4);
+	gr5.add(d5);
+	
+	diet.add(lDiet);
+	dietQ.add(d1);
+	dietQ.add(d2);
+	dietQ.add(d3);
+	dietQ.add(d4);
+	dietQ.add(d5);
+	
+	// Comments
+	Panel comment = new Panel();
+	Panel pComment = new Panel();
+	Label lComment = new Label("Additional Comments or Concerns (Optional)");
+	lComment.setFont(new Font("Arial", Font.PLAIN, 15));
+	tComment = new JTextArea();
+	tComment.setBorder(new LineBorder(Color.BLACK));
+	tComment.setPreferredSize(new Dimension(500,90));
+	
+
+	comment.add(lComment);
+	
+	
+	
+	// LABEL FORMATS
+	headerLabel.setFont(new Font("Arial", Font.BOLD, 26));	
+	subHeaderLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+	pInfo.setFont(new Font("Arial", Font.BOLD, 15));
+	
+	
+	
+	
+	// FRAME COMPONENTS
+	JPanel bot = new JPanel();
+	JPanel upperbot = new JPanel();
+	JPanel lowbot = new JPanel();
+	
+	frame.add(header, BorderLayout.NORTH);
+	frame.add(infoPanel);
+	infoPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	frame.add(bot, BorderLayout.SOUTH);
+	
+	// BOTTOM PANEL
+	bot.setLayout(new GridLayout(2,1));
+	bot.add(upperbot);
+	bot.add(lowbot);
+	upperbot.add(tComment);
+
+	submit = new JButton ("Submit");
+	submit.addActionListener(new FinalMP9());
+	lowbot.add(submit);
+	
+	
+	// PANEL COMPONENTS
+	//header.setBackground(Color.black);
+	header.add(headerSplit1);
+	header.add(headerSplit2);
+	header.add(pInfo);
+
+	
+	
+	headerSplit1.add(headerLabel);
+	headerSplit1.setLayout(new FlowLayout(FlowLayout.RIGHT));
+	headerSplit1.setPreferredSize(new Dimension(10,10));
+	
+	headerSplit2.add(subHeaderLabel);
+	headerSplit2.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+	
+	
+	
+	// INFO 
+	infoPanel.add(leftInfo, BorderLayout.WEST);
+	infoPanel.add(rightInfo, BorderLayout.EAST);
+	infoPanel.add(pHealth);
+	infoPanel.add(HealthPanel);
+	pHealth.setPreferredSize(new Dimension(144,27));
+
+	
+	HealthPanel.setLayout(new GridLayout(14,1,0,0));
+	
+	// Overall Health
+	HealthPanel.add(overallH);
+	overallH.setLayout(new FlowLayout(FlowLayout.LEFT));
+	HealthPanel.add(overallHQ);
+	overallHQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+	// Chronic
+	HealthPanel.add(chronic);
+	chronic.setLayout(new FlowLayout(FlowLayout.LEFT));
+	HealthPanel.add(chronicQ);
+	chronicQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
+	// Exercise
+	HealthPanel.add(exercise);
+	exercise.setLayout(new FlowLayout(FlowLayout.LEFT));
+	HealthPanel.add(exerciseQ);
+	exerciseQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
+	// Tobacco
+	HealthPanel.add(tobacco);
+	tobacco.setLayout(new FlowLayout(FlowLayout.LEFT));
+	HealthPanel.add(tobaccoQ);
+	tobaccoQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
+	// Stress
+	HealthPanel.add(stress);
+	stress.setLayout(new FlowLayout(FlowLayout.LEFT));
+	HealthPanel.add(stressQ);
+	stressQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
+	// Diet
+		HealthPanel.add(diet);
+		diet.setLayout(new FlowLayout(FlowLayout.LEFT));
+		HealthPanel.add(dietQ);
+		dietQ.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
+	// Comments
+		HealthPanel.add(comment);
+		comment.setLayout(new FlowLayout(FlowLayout.LEFT));
+		
+	
+
+	
+		
+		
+	// Add panels for components
+	pName.add(name);
+	pName.add(tName);
+
+	pDate.add(date);
+	pDate.add(tDate);
+	
+	pPlace.add(place);
+	pPlace.add(tPlace);
+	
+	
+	pAge.add(age);
+	pAge.add(tAge);
+	
+	pEmail.add(email);
+	pEmail.add(tEmail);
+	
+	pGender.add(gender);
+	pGender.add(male);
+	pGender.add(female);
+	
+	
+	
+	// LEFT PANEL
+	leftInfo.add(pName);
+	leftInfo.add(pDate);
+	leftInfo.add(pPlace);
+	
+	// RIGHT PANEL
+	rightInfo.setLayout(new GridLayout(3,1,0,0));
+	rightInfo.add(pAge);
+	rightInfo.add(pEmail);
+	rightInfo.add(pGender);
+
+	
+	
+
+	
+	
+	
+	// PANEL SETTINGS
+	header.setLayout(new GridLayout(3,1,0,0));
+
+	// FRAME SETTINGS
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+    frame.setSize(620, 950);
+    frame.setResizable(false);
+	frame.setVisible(true);
+	}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	
+	if(e.getSource() == submit)
+	{
+		NewWindow nw = new NewWindow();
+	}
+	
+}
+
+public class NewWindow
+	{
+		String userN = tName.getText();
+		String userD = tDate.getText();
+		String userP = tPlace.getText();
+		String userA = tAge.getText();
+		String userE = tEmail.getText();
+		String userC = tComment.getText();
+		
+		
+		JFrame frame2 = new JFrame("Summary");
+		
+		NewWindow()
+		{
+			
+			
+			// GENDER
+			String userGender = null;
+			if (male.isSelected())
+			{
+				userGender = "Male";
+			} else if(female.isSelected())
+			{
+				userGender = "Female";
+			}
+			
+			// OVERALL HEALTH
+			String overallHealth = null;
+			if (excellent.isSelected())
+			{
+				overallHealth = "Excellent";
+			} 
+			
+			else if(vGood.isSelected())
+			{
+				overallHealth = "Very Good";
+			}
+			else if(good.isSelected())
+			{
+				overallHealth = "Good";
+			}
+			else if(fair.isSelected())
+			{
+				overallHealth = "Fair";
+			}
+			
+			else if(poor.isSelected())
+			{
+				overallHealth = "Poor";
+			}
+			
+			// CHRONIC
+			
+			String chronicD = "";
+		    boolean selected = false;
+		    if (hdisease.isSelected()) {
+		        chronicD += "\n•Heart Disease ";
+		        selected = true;
+		    }
+		    if (diabetes.isSelected()) {
+		        chronicD += "\n•Diabetes ";
+		        selected = true;
+		    }
+		    if (hypertension.isSelected()) {
+		        chronicD += "\n•Hypertension ";
+		        selected = true;
+		    }
+		    if (asthma.isSelected()) {
+		        chronicD += "\n•Asthma ";
+		        selected = true;
+		    }
+		    if (other.isSelected()) {
+		        chronicD += "\n•Others ";
+		        selected = true;
+		    }
+		    if (!selected) {
+		        chronicD += "\n•None";
+		    }
+			
+			// PHYSICAL ACTVITY
+		 			String PA = null;
+		 			if (daily.isSelected())
+		 			{
+		 				PA = "Daily";
+		 			} 
+		 			
+		 			else if(week3.isSelected())
+		 			{
+		 				PA = "3-5x a week";
+		 			}
+		 			else if(week1.isSelected())
+		 			{
+		 				PA = "1-2x a week";
+		 			}
+		 			else if(rarely.isSelected())
+		 			{
+		 				PA = "Rarely";
+		 			}
+		 			
+		 			else if(never.isSelected())
+		 			{
+		 				PA = "Never";
+		 			}
+		    
+		    
+		 	//  Smoke or Tobacco Use
+		 			String smoke = null;
+		 			if (regular.isSelected())
+		 			{
+		 				smoke = "Regularly";
+		 			} 
+		 			
+		 			else if(occasional.isSelected())
+		 			{
+		 				smoke = "Occasionaly";
+		 			}
+		 			else if(never2.isSelected())
+		 			{
+		 				smoke = "Never";
+		 			}
+		 			else if(quit.isSelected())
+		 			{
+		 				smoke = "Quit";
+		 			}
+		 			
+		 			else if(other2.isSelected())
+		 			{
+		 				smoke = "Other";
+		 			}
+		 			
+		 	// Stress Level
+		 			String stress = null;
+		 			if (low.isSelected())
+		 			{
+		 				stress = "Low";
+		 			} 
+		 			
+		 			else if(moderate.isSelected())
+		 			{
+		 				stress = "Moderate";
+		 			}
+		 			else if(high.isSelected())
+		 			{
+		 				stress = "High";
+		 			}
+		 			else if(veryhigh.isSelected())
+		 			{
+		 				stress = "Very High";
+		 			}
+		 			
+		 			else if(none.isSelected())
+		 			{
+		 				stress = "None";
+		 			}
+		 			
+		 			// Fruits/Vegetables Consumption
+		 			String food = null;
+		 			if (d1.isSelected())
+		 			{
+		 				food = "Daily";
+		 			} 
+		 			
+		 			else if(d2.isSelected())
+		 			{
+		 				food = "3-5x a week";
+		 			}
+		 			else if(d3.isSelected())
+		 			{
+		 				food = "1-2x a week";
+		 			}
+		 			else if(d4.isSelected())
+		 			{
+		 				food = "Rarely";
+		 			}
+		 			
+		 			else if(d5.isSelected())
+		 			{
+		 				food = "Never";
+		 			}
+		 			
+		 			if (userN.isEmpty() || userD.isEmpty() || userP.isEmpty() || userA.isEmpty() || userE.isEmpty() || userGender == null || overallHealth == null || PA == null || smoke == null || stress == null || food == null) 
+		 			{
+		 		        	JOptionPane.showMessageDialog(null,"Missing Field/s!","",JOptionPane.WARNING_MESSAGE);
+		 		      }
+		 			
+		 		
+		 			
+		 			
+		 			
+		 			
+			
+			// **********************************************
+			Panel header = new Panel();
+			Panel lheader = new Panel();
+			Panel rheader = new Panel();
+			Panel lhead2 = new Panel();
+			Panel body = new Panel();
+			//body.setBackground(Color.RED);
+			
+			frame2.add(header, BorderLayout.NORTH);
+			frame2.add(body, BorderLayout.CENTER);
+			header.setLayout(new FlowLayout(FlowLayout.LEFT));
+			
+			header.setLayout(new GridLayout (1,2));
+			header.add(lheader, BorderLayout.WEST);
+			header.add(rheader, BorderLayout.EAST);
+			
+			
+			lheader.setLayout(new GridLayout(4,1));
+			Label title = new Label ("Personal Information");
+			title.setFont(new Font("Arial", Font.BOLD, 15));
+			title.setPreferredSize(new Dimension(10,10));
+
+			Label space = new Label (" ");
+			space.setFont(new Font("Arial", Font.BOLD, 15));
+			space.setPreferredSize(new Dimension(10,10));
+			
+			Label lName = new Label("Name: " + userN);
+			Label lDate = new Label("Date: " + userD);
+			Label lPlace = new Label ("Place: " + userP);
+			Label lAge = new Label ("Age: " + userA);
+			Label lEmail = new Label("Email: " + userE);
+			Label lGender = new Label("Gender: " + userGender);
+			
+			//lheader.setBackground(Color.BLACK);
+
+			rheader.setLayout(new GridLayout(4,1));
+
+			
+			lheader.add(title);
+			lheader.add(lName);
+			lheader.add(lAge);
+			lheader.add(lDate);
+			rheader.add(space);
+			rheader.add(lPlace);
+			rheader.add(lEmail);
+			rheader.add(lGender);
+			
+			// BODY
+			body.setLayout(new GridLayout(9,1));
+		
+			
+			Label oHealth = new Label("Overall Health: " + overallHealth);
+			Label chornic = new Label("Chronic Health Condition/s: ");
+			Panel choices = new Panel();
+			choices.setLayout(new GridLayout(3,2));
+			Label choiceC = new Label(chronicD);
+			choices.add(choiceC);
+			Label physical = new Label("Physical activity: " + PA);
+			Label smokey = new Label("Smoke or Tobacco use: " + smoke);
+			Label stressy = new Label("Stress level: " + stress);
+			Label diet = new Label("Fruits/Vegetables Consumption: " + food);
+			Label commentUser = new Label("Additional Comments or Concerns: ");
+			commentUser.setFont(new Font("Arial", Font.BOLD, 15));
+
+			Panel commentpanel = new Panel();
+			commentpanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+			Label UserComment = new Label(userC);
+			commentpanel.add(UserComment);
+			commentpanel.setPreferredSize(new Dimension(10,10));
+
+			
+			body.add(oHealth);
+			body.add(chornic);
+			body.add(choices);
+			body.add(physical);
+			body.add(smokey);
+			body.add(stressy);
+			body.add(diet);
+			body.add(commentUser);
+			body.add(commentpanel);
+				
+			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+			frame2.setSize(500, 500);
+			frame2.setResizable(false);
+			frame2.setVisible(true);
+		}
+	
+	}
+}
